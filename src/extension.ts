@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
-    "dartlocalizer.helloWorld",
+    "dartlocalizer.localizeString",
     async (line: number) => {
       // The code you place here will be executed every time your command is executed
       // Display a message box to the user
@@ -170,12 +170,12 @@ export class SourceCodeActionProvider implements vscode.CodeActionProvider {
     ) {
       actions.push({
         command: {
-          command: "dartlocalizer.helloWorld",
-          title: "Hello World",
+          command: "dartlocalizer.localizeString",
+          title: "Localize String",
           arguments: [range.start.line],
         },
         kind: vscode.CodeActionKind.RefactorExtract,
-        title: "Hello World",
+        title: "Localize String",
       });
     }
 
