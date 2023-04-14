@@ -43,7 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
           var localizationName: string | undefined = text
             .replace(param ?? "", "")
             .trim()
+            .replace(/[^a-zA-Z ]/g, "")
             .split(" ")
+            .slice(0, 5)
             .map((s, i) =>
               i > 0
                 ? s.charAt(0).toUpperCase() + s.slice(1)
@@ -51,10 +53,9 @@ export function activate(context: vscode.ExtensionContext) {
             )
             .join("");
 
-          text = text.replace(
-            param ?? "",
-            "{n, plural, =1{one n} other{{n} ns}}"
-          );
+          if (param != null) {
+            text = text.replace(param, "{n, plural, =1{one n} other{{n} ns}}");
+          }
 
           const german = await vscode.window.showInputBox({
             title: "German Text",
