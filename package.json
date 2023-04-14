@@ -6,6 +6,7 @@
   "engines": {
     "vscode": "^1.76.0"
   },
+  "publisher": "jannisberndt",
   "categories": [
     "Other"
   ],
@@ -14,6 +15,10 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {},
+  "repository": {
+    "url": "https://github.com/jb3rndt/vs.git",
+    "type": "git"
+  },
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
