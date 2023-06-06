@@ -40,18 +40,6 @@ export function activate(context: vscode.ExtensionContext) {
           // Get the word within the selection
           var text = document.getText(range);
           const param = text.match(new RegExp("[$][^ ]+"))?.[0];
-          var localizationName: string | undefined = text
-            .replace(param ?? "", "")
-            .trim()
-            .replace(/[^a-zA-Z ]/g, "")
-            .split(" ")
-            .slice(0, 5)
-            .map((s, i) =>
-              i > 0
-                ? s.charAt(0).toUpperCase() + s.slice(1)
-                : s.charAt(0).toLowerCase() + s.slice(1)
-            )
-            .join("");
 
           if (param != null) {
             text = text.replace(param, "{n, plural, =1{one n} other{{n} ns}}");
@@ -68,6 +56,18 @@ export function activate(context: vscode.ExtensionContext) {
             value: text,
           });
           if (!english) return;
+
+          var localizationName: string | undefined = english
+            .trim()
+            .replace(/[^a-zA-Z ]/g, "")
+            .split(" ")
+            .slice(0, 5)
+            .map((s, i) =>
+              i > 0
+                ? s.charAt(0).toUpperCase() + s.slice(1)
+                : s.charAt(0).toLowerCase() + s.slice(1)
+            )
+            .join("");
 
           localizationName = await vscode.window.showInputBox({
             title: "Localization Name",
