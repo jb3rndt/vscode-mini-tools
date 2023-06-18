@@ -2,7 +2,7 @@
   "name": "minitools",
   "displayName": "Mini Tools",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.76.0"
   },

@@ -112,18 +112,18 @@ export function activate(context: vscode.ExtensionContext) {
                     .replace("$", "")
                     .replace("{", "")
                     .replace("}", "")})`
-                : `AppLocalizations.of(context).${localizationName}`
+                : `AppLocalizations.of(context)!.${localizationName}`
             );
             if (
               !document
                 .getText()
                 .includes(
-                  "import 'package:flutter_gen/gen_l10n/app_localizations.dart';"
+                  "import \"package:flutter_248/l10n/app_localizations.dart\";"
                 )
             )
               editBuilder.insert(
                 new vscode.Position(0, 0),
-                "import 'package:flutter_gen/gen_l10n/app_localizations.dart';\n"
+                "import \"package:flutter_248/l10n/app_localizations.dart\";\n"
               );
           });
         }
