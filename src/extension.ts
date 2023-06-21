@@ -61,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
             .trim()
             .replace(/[^a-zA-Z ]/g, "")
             .split(" ")
-            .slice(0, 5)
+            .slice(0, 10)
             .map((s, i) =>
               i > 0
                 ? s.charAt(0).toUpperCase() + s.slice(1)
@@ -108,7 +108,7 @@ export function activate(context: vscode.ExtensionContext) {
             editBuilder.replace(
               fullRange,
               param
-                ? `AppLocalizations.of(context).${localizationName}(${param
+                ? `AppLocalizations.of(context)!.${localizationName}(${param
                     .replace("$", "")
                     .replace("{", "")
                     .replace("}", "")})`
